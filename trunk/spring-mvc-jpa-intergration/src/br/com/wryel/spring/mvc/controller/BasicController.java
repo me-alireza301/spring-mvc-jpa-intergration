@@ -1,5 +1,7 @@
 package br.com.wryel.spring.mvc.controller;
 
+import org.springframework.context.annotation.Scope;
+
 import br.com.wryel.spring.mvc.dao.BasicDAO;
 import br.com.wryel.spring.mvc.model.BasicModel;
 
@@ -8,6 +10,7 @@ import br.com.wryel.spring.mvc.model.BasicModel;
  * @author wryel covo
  *
  */
+@Scope("session")
 public abstract class BasicController<BEAN, MODEL extends BasicModel<BEAN, ? extends BasicDAO<BEAN>>> {
 	
 	public static final String INPUT = "input";
