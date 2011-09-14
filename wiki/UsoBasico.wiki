@@ -1,0 +1,11 @@
+Mapeamento de Entidade Básica
+
+{{{
+public class Pessoa implements Serializable {
+	
+	@Id
+	@GeneratedValue
+	@Column(name = "id_pessoa")
+	private Long id;
+}
+}}}
