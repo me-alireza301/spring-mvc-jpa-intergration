@@ -1,18 +1,19 @@
 package br.com.wryel.spring.mvc.dao;
 
+import java.lang.reflect.Field;
 import java.security.InvalidParameterException;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.persistence.EmbeddedId;
 import javax.persistence.EntityManager;
+import javax.persistence.Id;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import org.springframework.beans.BeanUtils;
-
-import br.com.wryel.util.JPAUtils;
 
 /**
  * 
@@ -72,7 +73,25 @@ public abstract class BasicDAO<BEAN> extends AbstractPropertiesDAO<BEAN> {
 	}
 	
 	protected Object getPrimaryKey(BEAN bean) {
-		return JPAUtils.getPrimaryKey(bean);
+		
+		Field[] fields = bean.getClass().getDeclaredFields();
+		
+		for (Field field : fields) {
+			if (field.isAnnotationPresent(Id.class) || field.isAnnotationPresent(EmbeddedId.class)) {
+				if (!field.isAccessible()) {
+					field.setAccessible(true);
+				}
+				try {
+					Object primatyKey = field.get(bean);
+					return primatyKey;
+				} catch (Exception e) {
+					e.printStackTrace();
+					break;
+				}
+			}
+		}
+		
+		return null;
 	}
 	
 	public void delete(BEAN bean) {
