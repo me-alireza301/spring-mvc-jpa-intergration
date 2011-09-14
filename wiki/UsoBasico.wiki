@@ -3,7 +3,7 @@ Mapeamento de Entidade Básica
 {{{
 @Entity
 @Table(name = "pessoa")
-public class Pessoa implements Serializable, Cloneable {
+public class Pessoa implements Serializable {
 	
 	@Id
 	@GeneratedValue
