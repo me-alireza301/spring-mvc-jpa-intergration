@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.com.wryel.spring.mvc.ApplicationException;
 import br.com.wryel.spring.mvc.bean.Colecao;
 import br.com.wryel.spring.mvc.model.ColecaoModel;
 
@@ -29,7 +30,7 @@ public class ColecaoController extends BasicController<Colecao, ColecaoModel> {
 	}
 	
 	@RequestMapping(value = "save", method = RequestMethod.POST)
-	public String save(@ModelAttribute("colecao") Colecao colecao) {
+	public String save(@ModelAttribute("colecao") Colecao colecao) throws ApplicationException {
 		
 		getModel().save(colecao);
 		

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import br.com.wryel.spring.mvc.ApplicationException;
 import br.com.wryel.spring.mvc.bean.Pessoa;
 import br.com.wryel.spring.mvc.model.PessoaModel;
 
@@ -30,7 +31,7 @@ public class PessoaController extends BasicController<Pessoa, PessoaModel> {
 	}
 	
 	@RequestMapping(value = "list", method = RequestMethod.GET)
-	public String list(ModelMap modelMap) {
+	public String list(ModelMap modelMap) throws ApplicationException {
 		
 		List<Pessoa> pessoas = getModel().list();
 		
@@ -40,7 +41,7 @@ public class PessoaController extends BasicController<Pessoa, PessoaModel> {
 	}
 	
 	@RequestMapping(value = "edit/{id}", method = RequestMethod.GET)
-	public String edit(@PathVariable("id") Long id, ModelMap modelMap) {
+	public String edit(@PathVariable("id") Long id, ModelMap modelMap) throws ApplicationException {
 		
 		Pessoa pessoaDoBanco = getModel().retrieve(new Pessoa(id));
 		
@@ -70,7 +71,7 @@ public class PessoaController extends BasicController<Pessoa, PessoaModel> {
 	}
 	
 	@RequestMapping(value = "delete/{id}", method = RequestMethod.GET)
-	public String delete(@PathVariable("id") Long id, ModelMap modelMap) {
+	public String delete(@PathVariable("id") Long id, ModelMap modelMap) throws ApplicationException {
 		
 		getModel().delete(new Pessoa(id));
 		
