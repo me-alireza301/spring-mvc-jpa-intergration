@@ -31,6 +31,7 @@ public class Usuario implements Serializable, Cloneable {
 	@ManyToOne
 	private TipoUsuario tipoUsuario;
 
+	
 	public Usuario() {
 		
 	}
@@ -106,5 +107,13 @@ public class Usuario implements Serializable, Cloneable {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+	
+	public void aaa(Long aaa) {
+		
+	}
+	
+	public void aaa(long aaa) {
+		
 	}
 }
