@@ -38,16 +38,7 @@
 		<property name="properties">
 			<props>
                 <prop key="user">root</prop>
-                <prop key="password">iamarock</prop>
-                
-        -->      
-        <!-- Host Gator 
-		
-		<property name="jdbcUrl" value="jdbc:mysql://74.52.189.155:3306/wryel460_android?autoReconnect=true" />
-		<property name="properties">
-			<props>
-                <prop key="user">wryel460_android</prop>
-                <prop key="password">andr0id</prop>
+                <prop key="password">demo</prop>
                 
         -->
         
@@ -55,7 +46,7 @@
 		<property name="properties">
 			<props>
                 <prop key="user">root</prop>
-                <prop key="password">demo</prop>
+                <prop key="password"></prop>
 <!-- 				<prop key="c3p0.max_size">50</prop> -->
 <!-- 				<prop key="c3p0.min_size">1</prop> -->
 <!-- 				<prop key="c3p0.acquire_increment">3</prop> -->

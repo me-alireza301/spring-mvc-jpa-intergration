@@ -5,28 +5,19 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<title></title>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/global.css" type="text/css" media="screen, projection" />
-		<!--[if lte IE 6]>
-			<link rel="stylesheet" href="${pageContext.request.contextPath}/css/global_ie.css" type="text/css" media="screen, projection" />
-		<![endif]-->
 	</head>
 	<body>
-		<div id="wrapper">
-			<div id="header">
-				Topo
-			</div>
-			<div id="middle">	
-				<div id="container">
-					<div id="content">
-						<tiles:insertAttribute name="body" />
-					</div>
-				</div>
-				<div class="sidebar" id="sideLeft">
-					Menu
-				</div>
-			</div>
-		</div>
-		<div id="footer">
-			Rodape
+		<div class="wrapper">
+	        <div class="header">
+	            header
+	        </div>	    
+	        <div class="content">
+	        aa
+	            <tiles:insertAttribute name="body" />
+	        </div> 	       
+	        <div class="footer">
+	            footer
+	        </div>
 		</div>
 	</body>
 </html>
