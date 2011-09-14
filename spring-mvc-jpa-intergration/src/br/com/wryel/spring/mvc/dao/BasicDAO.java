@@ -43,7 +43,7 @@ public abstract class BasicDAO<BEAN> extends AbstractPropertiesDAO<BEAN> {
 		this.entityManager = entityManager;
 	}
 	
-	public void save(BEAN bean) {
+	public void save(BEAN bean) throws DAOException {
 		if (isNew(bean)) {
 			insert(bean);
 		} else {
@@ -51,17 +51,17 @@ public abstract class BasicDAO<BEAN> extends AbstractPropertiesDAO<BEAN> {
 		}
 	}
 	
-	public BEAN retrieve(BEAN bean) {
+	public BEAN retrieve(BEAN bean) throws DAOException {
 		bean = entityManager.find(beanClass, getPrimaryKey(bean));
 		return bean;
 	}
 	
-	protected void insert(BEAN bean) {
+	protected void insert(BEAN bean) throws DAOException {
 		entityManager.persist(bean);
 		entityManager.flush();
 	}
 	
-	protected void update(BEAN bean) {
+	protected void update(BEAN bean) throws DAOException {
 		BEAN localBean = retrieve(bean);
 		BeanUtils.copyProperties(bean, localBean);
 		entityManager.merge(localBean);
@@ -94,13 +94,13 @@ public abstract class BasicDAO<BEAN> extends AbstractPropertiesDAO<BEAN> {
 		return null;
 	}
 	
-	public void delete(BEAN bean) {
+	public void delete(BEAN bean) throws DAOException {
 		BEAN findedBean = retrieve(bean);
 		entityManager.remove(findedBean);
 		entityManager.flush();
 	}
 	
-	public long count(Map<String, Object> parametros) {
+	public long count(Map<String, Object> parametros) throws DAOException {
 		
 		String selectKey = beanClass.getSimpleName() + "." + SELECT_KEY;
 		
@@ -150,7 +150,7 @@ public abstract class BasicDAO<BEAN> extends AbstractPropertiesDAO<BEAN> {
 		
 	}
 	
-	public List<BEAN> list(Map<String, Object> parametros) {
+	public List<BEAN> list(Map<String, Object> parametros) throws DAOException {
 		
 		String selectKey = beanClass.getSimpleName() + "." + SELECT_KEY;
 		
@@ -194,7 +194,7 @@ public abstract class BasicDAO<BEAN> extends AbstractPropertiesDAO<BEAN> {
 		return list;		
 	}
 	
-	public List<BEAN> executeNamedQuery(String key, Object...parametros) {
+	public List<BEAN> executeNamedQuery(String key, Object...parametros) throws DAOException {
 		
 		String sql = properties.getProperty(NAMED_KEY + "." + key);
 		
@@ -211,7 +211,7 @@ public abstract class BasicDAO<BEAN> extends AbstractPropertiesDAO<BEAN> {
 		return list;
 	}
 	
-	public List<BEAN> executeNamedQuery(String name, Map<String, Object> parametros) {
+	public List<BEAN> executeNamedQuery(String name, Map<String, Object> parametros) throws DAOException {
 		
 		String sql = properties.getProperty(NAMED_KEY + "." + name);
 		

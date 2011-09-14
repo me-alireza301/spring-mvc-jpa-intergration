@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.com.wryel.spring.mvc.ApplicationException;
 import br.com.wryel.spring.mvc.bean.TipoUsuario;
 import br.com.wryel.spring.mvc.bean.Usuario;
 import br.com.wryel.spring.mvc.model.UsuarioModel;
@@ -25,7 +26,7 @@ public class UsuarioController extends BasicController<Usuario, UsuarioModel> {
 	}
 	
 	@RequestMapping(value = "list", method = RequestMethod.GET)
-	public ModelAndView list() {
+	public ModelAndView list() throws ApplicationException {
 		
 		List<Usuario> usuarios = getModel().list(new HashMap<String, Object>());
 		
@@ -35,7 +36,7 @@ public class UsuarioController extends BasicController<Usuario, UsuarioModel> {
 	}
 	
 	@RequestMapping(value = "add", method = RequestMethod.GET)
-	public ModelAndView add() {
+	public ModelAndView add() throws ApplicationException {
 		
 		ModelAndView modelAndView = new ModelAndView("/usuario/" + INPUT, "usuario", new Usuario(new TipoUsuario()));
 		
@@ -43,13 +44,13 @@ public class UsuarioController extends BasicController<Usuario, UsuarioModel> {
 	}
 	
 	@RequestMapping(value = "save", method = RequestMethod.POST)
-	public ModelAndView save(@ModelAttribute("usuario") Usuario usuario) {
+	public ModelAndView save(@ModelAttribute("usuario") Usuario usuario) throws ApplicationException {
 		
 		Map<String, Object> params = new HashMap<String, Object>();
 		
 		params.put("login", usuario.getLogin());
 		
-		long quantidadeDeUsuarios = getModel().countList(params);
+		long quantidadeDeUsuarios = getModel().count(params);
 		
 		ModelAndView modelAndView = new ModelAndView();
 		

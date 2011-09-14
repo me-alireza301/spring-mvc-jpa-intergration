@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.com.wryel.spring.mvc.ApplicationException;
 import br.com.wryel.spring.mvc.bean.Card;
 import br.com.wryel.spring.mvc.model.CardModel;
 
@@ -26,7 +27,7 @@ public class CardController extends BasicController<Card, CardModel> {
 	}
 	
 	@RequestMapping(value = "busca", method = RequestMethod.GET)
-	public ModelAndView busca(HttpServletRequest request) {
+	public ModelAndView busca(HttpServletRequest request) throws ApplicationException {
 		
 		Map<String, Object> parametros = new HashMap<String, Object>();
 		
@@ -36,7 +37,7 @@ public class CardController extends BasicController<Card, CardModel> {
 		
 		List<Card> cards = getModel().list(parametros);
 		
-		long resultados = getModel().countList(parametros);
+		long resultados = getModel().count(parametros);
 		
 		ModelAndView modelAndView = new ModelAndView("card.list");
 		
