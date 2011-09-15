@@ -5,8 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -51,17 +50,25 @@ public class UsuarioController extends BasicController<Usuario, UsuarioModel> {
 	}
 	
 	@RequestMapping(value = "save", method = RequestMethod.POST)
-	public ModelAndView save(@ModelAttribute("usuario") Usuario usuario, BindingResult bindingResult) throws ApplicationException {
+	public ModelAndView save(@ModelAttribute("usuario") Usuario usuario, Errors errors) throws ApplicationException {
 		
 		ModelAndView modelAndView = new ModelAndView();
 		
 		try {
+			
 			getModel().save(usuario);			
 			modelAndView.setViewName(redirect("/usuario/" + LIST));
+		
 		} catch (ModelException modelException) {
-			bindingResult.addError(new ObjectError("login", modelException.getMessage()));
+		
+			List<TipoUsuario> tiposUsuario = ModelFactory.getModel(TipoUsuario.class).list();
+			modelAndView.addObject("tiposUsuario", tiposUsuario);
+			
+			errors.reject("login", modelException.getMessage());
+			
 			modelAndView.setViewName("/usuario/" + INPUT);
 			modelAndView.addObject("usuario", usuario);
+			
 		}
 		
 		return modelAndView;

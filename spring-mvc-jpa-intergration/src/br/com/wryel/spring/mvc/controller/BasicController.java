@@ -17,6 +17,8 @@ public abstract class BasicController<BEAN, MODEL extends BasicModel<BEAN, ? ext
 	
 	public static final String LIST = "list";
 	
+	public static final String VIEW_EXTENSION = ".java";
+	
 	protected MODEL model;
 	
 	public BasicController() {
@@ -41,6 +43,6 @@ public abstract class BasicController<BEAN, MODEL extends BasicModel<BEAN, ? ext
 	 * @return
 	 */
 	protected String redirect(String value) {
-		return "redirect:" + value;
+		return "redirect:" + value + VIEW_EXTENSION;
 	}	
 }

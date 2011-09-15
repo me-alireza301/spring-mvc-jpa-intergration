@@ -5,6 +5,8 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.wryel.spring.mvc.ApplicationException;
 import br.com.wryel.spring.mvc.bean.Usuario;
@@ -24,6 +26,7 @@ public class UsuarioModel extends BasicModel<Usuario, UsuarioDAO> {
 	}
 	
 	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
 	public void save(Usuario usuario) throws ApplicationException {
 		if (JPAUtils.getKey(usuario) == null) {
 			Map<String, Object> params = new HashMap<String, Object>();
