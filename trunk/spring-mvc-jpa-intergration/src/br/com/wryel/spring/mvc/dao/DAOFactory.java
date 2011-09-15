@@ -18,9 +18,9 @@ public class DAOFactory implements BeanFactoryAware {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static <BEAN extends Serializable> BasicDAO<BEAN> getModel(Class<BEAN> klass) {
-		String businessName = StringUtils.uncapitalize(klass.getSimpleName()+"DAO");
-		Object business = beanFactory.getBean(businessName);
-		return (BasicDAO<BEAN>) business;
+	public static <BEAN extends Serializable> BasicDAO<BEAN> getDAO(Class<BEAN> klass) {
+		String daoName = StringUtils.uncapitalize(klass.getSimpleName()+"DAO");
+		Object dao = beanFactory.getBean(daoName);
+		return (BasicDAO<BEAN>) dao;
 	}
 }

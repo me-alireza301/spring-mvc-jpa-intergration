@@ -10,10 +10,11 @@ import br.com.wryel.spring.mvc.model.BasicModel;
  * @author wryel covo
  *
  */
-@Scope("session")
+@Scope("request")
 public abstract class BasicController<BEAN, MODEL extends BasicModel<BEAN, ? extends BasicDAO<BEAN>>> {
 	
 	public static final String INPUT = "input";
+	
 	public static final String LIST = "list";
 	
 	protected MODEL model;
