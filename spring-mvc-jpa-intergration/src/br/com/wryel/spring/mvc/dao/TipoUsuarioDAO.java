@@ -2,9 +2,9 @@ package br.com.wryel.spring.mvc.dao;
 
 import org.springframework.stereotype.Repository;
 
-import br.com.wryel.spring.mvc.bean.Usuario;
+import br.com.wryel.spring.mvc.bean.TipoUsuario;
 
 @Repository
-public class UsuarioDAO extends BasicDAO<Usuario> {
+public class TipoUsuarioDAO extends BasicDAO<TipoUsuario> {
 	
 }
