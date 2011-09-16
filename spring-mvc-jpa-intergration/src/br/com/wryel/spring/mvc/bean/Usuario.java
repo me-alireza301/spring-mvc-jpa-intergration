@@ -109,11 +109,8 @@ public class Usuario implements Serializable, Cloneable {
 		return true;
 	}
 	
-	public void aaa(Long aaa) {
-		
-	}
-	
-	public void aaa(long aaa) {
-		
+	@Override
+	public Usuario clone() throws CloneNotSupportedException {
+		return (Usuario) super.clone();
 	}
 }
