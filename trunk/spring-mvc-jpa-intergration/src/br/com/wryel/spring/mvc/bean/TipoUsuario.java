@@ -90,4 +90,9 @@ public class TipoUsuario implements Serializable, Cloneable {
 			return false;
 		return true;
 	}
+	
+	@Override
+	public TipoUsuario clone() throws CloneNotSupportedException {
+		return (TipoUsuario) super.clone();
+	}
 }
