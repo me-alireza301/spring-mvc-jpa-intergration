@@ -15,7 +15,13 @@
 .content {
    float: left;
    width: 100%;
-   background-color: #99ccff
+   background-color: #fefefe;
+}
+
+.content-error {
+   margin: 0 auto;
+   width: 96%;
+   border: 1px solid red;
 }
 
 .footer {
@@ -29,5 +35,10 @@ body {
    padding: 0px;
    margin: 0px;
    font-size: 15px;
-   background-color: #e7e7de
+   background-color: #e7e7de;
+   font-family: sans-serif;
+}
+
+input[type="text"] {
+	border: 1px solid #dedede;
 }
