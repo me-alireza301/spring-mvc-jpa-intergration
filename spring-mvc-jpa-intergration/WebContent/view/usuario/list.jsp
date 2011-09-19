@@ -7,6 +7,5 @@
 		<c:forEach items="${usuarios}" var="usuario">
 			<c:out value="${usuario.nome} - ${usuario.tipoUsuario.descricao}" /><br />
 		</c:forEach>
-		aa
 	</tiles:putAttribute>
 </tiles:insertTemplate>

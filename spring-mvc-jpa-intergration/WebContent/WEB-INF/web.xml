@@ -4,6 +4,10 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
+  <listener>
+  	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener> 
+  
   <filter>
     <filter-name>characterEncodingFilter</filter-name>
     <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -19,6 +23,22 @@
   <filter-mapping>
     <filter-name>characterEncodingFilter</filter-name>
     <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <filter>
+  	<filter-name>OpenEntityManagerInViewFilter</filter-name>
+  	<filter-class>org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>OpenEntityManagerInViewFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <filter>
+  	<filter-name>MontaMenu</filter-name>
+  	<filter-class>br.com.wryel.spring.mvc.filter.MontaMenuFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>MontaMenu</filter-name>
+  	<url-pattern>*.java</url-pattern>
   </filter-mapping>
   <servlet>
     <servlet-name>Spring MVC Dispatcher Servlet</servlet-name>

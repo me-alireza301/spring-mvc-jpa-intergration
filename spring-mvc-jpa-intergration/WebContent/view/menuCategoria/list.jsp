@@ -4,6 +4,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <tiles:insertTemplate template="/view/template/base.jsp">
 	<tiles:putAttribute name="body">
-		Erro no sistema: ${exception}
+		<c:forEach items="${menuCategorias}" var="menuCategoria">
+			<c:out value="${menuCategoria.descricao}" /><br />
+		</c:forEach>
 	</tiles:putAttribute>
 </tiles:insertTemplate>
