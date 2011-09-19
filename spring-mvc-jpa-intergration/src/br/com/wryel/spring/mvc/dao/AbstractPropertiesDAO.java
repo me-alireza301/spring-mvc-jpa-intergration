@@ -43,11 +43,15 @@ public abstract class AbstractPropertiesDAO<BEAN> {
 		return beanClass;
 	}
 
-	protected String buildString(String...keys) {
+	protected String getKey(String...keys) {
 		StringBuilder sql = new StringBuilder();
 		for (String key : keys) {
 			sql.append(getProperties().getProperty(key));
 		}
 		return sql.toString();
+	}
+	
+	protected String getNamed(String name) {
+		return getProperties().getProperty(NAMED_KEY + "." + name);
 	}
 }
