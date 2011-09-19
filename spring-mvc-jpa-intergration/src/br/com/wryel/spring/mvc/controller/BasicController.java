@@ -19,6 +19,8 @@ public abstract class BasicController<BEAN, MODEL extends BasicModel<BEAN, ? ext
 	
 	public static final String VIEW_EXTENSION = ".java";
 	
+	public static final String ERRORS = "errors";
+	
 	protected MODEL model;
 	
 	public BasicController() {
