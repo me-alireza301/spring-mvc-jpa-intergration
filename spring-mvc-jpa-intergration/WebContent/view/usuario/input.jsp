@@ -7,7 +7,7 @@
 		<form action="${pageContext.request.contextPath}/usuario/save.java" method="POST">
 			<form:errors path="*" element="div" />
 			<form:input path="usuario.nome" /><br />
-			<form:input path="usuario.login" /><br />
+			<form:input path="usuario.login" /><form:errors path="usuario.login" element="div" /><br />
 			<form:input path="usuario.senha" /><br />
 			<form:select items="${tiposUsuario}" itemValue="id" itemLabel="descricao" path="usuario.tipoUsuario.id" /><br />
 			<input type="submit" value="enviar" />
