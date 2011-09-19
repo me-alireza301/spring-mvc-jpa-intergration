@@ -24,6 +24,11 @@
    border: 1px solid red;
 }
 
+.horizontal-menu {
+	float: left;
+	width: 100%;
+}
+
 .footer {
    float: left;
    width: 100%;
