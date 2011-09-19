@@ -6,7 +6,8 @@
 #jsddm li {
 	float: left;
 	list-style: none;
-	font: 12px Tahoma, Arial
+	font: 12px Tahoma, Arial;
+	font-weight: bold;
 }
 
 #jsddm li a {
@@ -15,7 +16,7 @@
 	padding: 5px 12px;
 	text-decoration: none;
 	border-right: 1px solid white;
-	width: 70px;
+	width: auto;
 	color: #EAFFED;
 	white-space: nowrap;
 }
@@ -29,7 +30,7 @@
 	padding: 0;
 	position: absolute;
 	visibility: hidden;
-	border-top: 1px solid white;
+	border-top: 0px solid white;
 	min-width: 140px;
 }
 
@@ -41,7 +42,9 @@
 #jsddm li ul li a {
 	width: auto;
 	background: #A9C251;
-	color: #24313C
+	color: #24313C;
+	border-top: 1px solid #dedede;
+	font-weight: normal;
 }
 
 #jsddm li ul li a:hover {
