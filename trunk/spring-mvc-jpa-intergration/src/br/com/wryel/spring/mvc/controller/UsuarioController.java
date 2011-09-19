@@ -1,11 +1,12 @@
 package br.com.wryel.spring.mvc.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.Errors;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -50,8 +51,8 @@ public class UsuarioController extends BasicController<Usuario, UsuarioModel> {
 	}
 	
 	@RequestMapping(value = "save", method = RequestMethod.POST)
-	public ModelAndView save(@ModelAttribute("usuario") Usuario usuario, Errors errors) throws ApplicationException {
-		
+	public ModelAndView save(@ModelAttribute("usuario") Usuario usuario, BindingResult bindingResult) throws ApplicationException {
+
 		ModelAndView modelAndView = new ModelAndView();
 		
 		try {
@@ -64,7 +65,9 @@ public class UsuarioController extends BasicController<Usuario, UsuarioModel> {
 			List<TipoUsuario> tiposUsuario = ModelFactory.getModel(TipoUsuario.class).list();
 			modelAndView.addObject("tiposUsuario", tiposUsuario);
 			
-			errors.reject("login", modelException.getMessage());
+			List<String> errors = new ArrayList<String>();
+			errors.add(modelException.getMessage());
+			modelAndView.addObject(ERRORS, errors);
 			
 			modelAndView.setViewName("/usuario/" + INPUT);
 			modelAndView.addObject("usuario", usuario);
