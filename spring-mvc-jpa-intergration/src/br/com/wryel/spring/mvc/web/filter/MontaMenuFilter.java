@@ -1,4 +1,4 @@
-package br.com.wryel.spring.mvc.filter;
+package br.com.wryel.spring.mvc.web.filter;
 
 import java.io.IOException;
 import java.util.List;

@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -20,6 +23,7 @@ import br.com.wryel.spring.mvc.bean.Usuario;
 import br.com.wryel.spring.mvc.model.ModelException;
 import br.com.wryel.spring.mvc.model.ModelFactory;
 import br.com.wryel.spring.mvc.model.UsuarioModel;
+import br.com.wryel.spring.mvc.web.HttpSessionParams;
 
 @Controller
 @RequestMapping(value = "/usuario")
@@ -79,7 +83,8 @@ public class UsuarioController extends BasicController<Usuario, UsuarioModel> {
 		return modelAndView;
 	}
 	
-	public ModelAndView login(@RequestParam String login, @RequestParam String senha) throws ApplicationException {
+	@RequestMapping(value = "loginValidate", method = RequestMethod.POST)
+	public ModelAndView loginValidate(@RequestParam String login, @RequestParam String senha, HttpServletRequest httpServletRequest) throws ApplicationException {
 		
 		ModelAndView modelAndView = new ModelAndView();
 		
@@ -89,6 +94,25 @@ public class UsuarioController extends BasicController<Usuario, UsuarioModel> {
 		parametros.put("senha", senha);
 		
 		List<Usuario> usuarios = getModel().list(parametros);
+		
+		if (usuarios.size() == 1) {
+			
+			HttpSession httpSession = httpServletRequest.getSession(true);
+			httpSession.setAttribute(HttpSessionParams.LOGGED_USER, usuarios.get(0));
+			httpSession.setMaxInactiveInterval(60 * 20);
+			
+			modelAndView.setViewName("/index");
+			
+		} else {
+			
+			modelAndView.setViewName(LOGIN);
+			
+			List<String> errors = new ArrayList<String>();
+			errors.add("usuario/senha inválido");
+			
+			modelAndView.addObject(ERRORS, errors);
+			
+		}
 		
 		return modelAndView;		
 	}
