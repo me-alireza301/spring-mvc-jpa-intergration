@@ -21,6 +21,8 @@ public abstract class BasicController<BEAN, MODEL extends BasicModel<BEAN, ? ext
 	
 	public static final String ERRORS = "errors";
 	
+	public static final String LOGIN = "/login";
+	
 	protected MODEL model;
 	
 	public BasicController() {
