@@ -14,9 +14,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "menu_link")
 public class MenuLink implements Serializable {
-
+	
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
 	@GeneratedValue
 	@Column(name = "id_menu_link")
@@ -26,7 +26,7 @@ public class MenuLink implements Serializable {
 	
 	private String url;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_menu_categoria")
 	private MenuCategoria menuCategoria;
 

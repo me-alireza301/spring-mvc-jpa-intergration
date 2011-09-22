@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 import javax.persistence.TypedQuery;
 
 import org.springframework.beans.BeanUtils;
@@ -21,7 +22,7 @@ import br.com.wryel.spring.mvc.util.JPAUtils;
  */
 public abstract class BasicDAO<BEAN> extends AbstractPropertiesDAO<BEAN> {
 	
-	@PersistenceContext
+	@PersistenceContext(type = PersistenceContextType.EXTENDED)
 	protected EntityManager entityManager;
 	
 	public static final String ORDER_BY = "orderBy";

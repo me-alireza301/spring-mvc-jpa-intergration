@@ -5,6 +5,7 @@
 <tiles:insertTemplate template="/view/template/base.jsp">
 	<tiles:putAttribute name="body">
 		<form action="${pageContext.request.contextPath}/usuario/save.java" method="POST">
+			<form:hidden path="usuario.id" />
 			<form:input path="usuario.nome" /><br />
 			<form:input path="usuario.login" /><form:errors path="usuario.login" element="div" /><br />
 			<form:input path="usuario.senha" /><br />

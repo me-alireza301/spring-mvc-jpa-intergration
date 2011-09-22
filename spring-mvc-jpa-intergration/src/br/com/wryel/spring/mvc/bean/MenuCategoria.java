@@ -24,7 +24,7 @@ public class MenuCategoria implements Serializable {
 	
 	private String descricao;
 	
-	@OneToMany(mappedBy = "menuCategoria")
+	@OneToMany(mappedBy = "menuCategoria", fetch = FetchType.EAGER)
 	private List<MenuLink> menuLinks;
 
 	public Long getId() {
