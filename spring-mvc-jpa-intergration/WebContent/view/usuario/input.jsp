@@ -12,5 +12,7 @@
 			<form:select items="${tiposUsuario}" itemValue="id" itemLabel="descricao" path="usuario.tipoUsuario.id" /><br />
 			<input type="submit" value="enviar" />
 		</form>
+		<br />
+		<a href="list.java">listar</a>
 	</tiles:putAttribute>
 </tiles:insertTemplate>

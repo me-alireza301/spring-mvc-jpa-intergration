@@ -15,5 +15,7 @@
 			</tr>
 			</c:forEach>
 		</table>
+		<br />
+		<a href="add.java">Adicionar</a>
 	</tiles:putAttribute>
 </tiles:insertTemplate>
