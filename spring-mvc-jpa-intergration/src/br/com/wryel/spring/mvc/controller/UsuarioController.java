@@ -67,7 +67,7 @@ public class UsuarioController extends BasicController<Usuario, UsuarioModel> {
 			modelAndView.setViewName(redirect("/usuario/" + LIST));
 		
 		} catch (ModelException modelException) {
-		
+			
 			List<TipoUsuario> tiposUsuario = ModelFactory.getModel(TipoUsuario.class).list();
 			modelAndView.addObject("tiposUsuario", tiposUsuario);
 			
@@ -81,6 +81,17 @@ public class UsuarioController extends BasicController<Usuario, UsuarioModel> {
 		}
 		
 		return modelAndView;
+	}
+	
+	@RequestMapping(value = "edit", method = RequestMethod.GET)
+	public ModelAndView edit(@RequestParam("id") Long id) throws ApplicationException {
+		
+		Usuario usuario = getModel().retrieve(new Usuario(id));
+		
+		ModelAndView modelAndView = new ModelAndView("/usuario/" + INPUT, "usuario", usuario);
+		
+		return modelAndView;
+		
 	}
 	
 	@RequestMapping(value = "loginValidate", method = RequestMethod.POST)
