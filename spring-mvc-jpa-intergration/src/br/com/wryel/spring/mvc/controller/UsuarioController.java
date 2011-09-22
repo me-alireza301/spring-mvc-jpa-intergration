@@ -99,9 +99,9 @@ public class UsuarioController extends BasicController<Usuario, UsuarioModel> {
 			
 			HttpSession httpSession = httpServletRequest.getSession(true);
 			httpSession.setAttribute(HttpSessionParams.LOGGED_USER, usuarios.get(0));
-			httpSession.setMaxInactiveInterval(60 * 20);
+			httpSession.setMaxInactiveInterval(60 * HttpSessionParams.SESSION_TIME_OUT);
 			
-			modelAndView.setViewName("/index");
+			modelAndView.setViewName("index");
 			
 		} else {
 			

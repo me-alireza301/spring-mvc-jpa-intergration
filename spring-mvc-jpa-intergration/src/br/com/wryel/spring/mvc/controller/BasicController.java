@@ -1,7 +1,5 @@
 package br.com.wryel.spring.mvc.controller;
 
-import org.springframework.context.annotation.Scope;
-
 import br.com.wryel.spring.mvc.dao.BasicDAO;
 import br.com.wryel.spring.mvc.model.BasicModel;
 
@@ -10,7 +8,6 @@ import br.com.wryel.spring.mvc.model.BasicModel;
  * @author wryel covo
  *
  */
-@Scope("request")
 public abstract class BasicController<BEAN, MODEL extends BasicModel<BEAN, ? extends BasicDAO<BEAN>>> {
 	
 	public static final String INPUT = "input";
@@ -21,7 +18,7 @@ public abstract class BasicController<BEAN, MODEL extends BasicModel<BEAN, ? ext
 	
 	public static final String ERRORS = "errors";
 	
-	public static final String LOGIN = "/login";
+	public static final String LOGIN = "login";
 	
 	protected MODEL model;
 	

@@ -26,7 +26,7 @@ public class MenuLink implements Serializable {
 	
 	private String url;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne
 	@JoinColumn(name = "id_menu_categoria")
 	private MenuCategoria menuCategoria;
 

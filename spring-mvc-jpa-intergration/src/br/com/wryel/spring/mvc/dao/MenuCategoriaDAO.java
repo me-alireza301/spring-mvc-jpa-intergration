@@ -10,6 +10,10 @@ import br.com.wryel.spring.mvc.bean.Usuario;
 @Repository
 public class MenuCategoriaDAO extends BasicDAO<MenuCategoria> {
 	
+	public MenuCategoriaDAO() {
+		
+	}
+	
 	public List<MenuCategoria> mountMenuByUser(Usuario usuario) throws DAOException {
 		List<MenuCategoria> menuCategorias = executeNamedQuery("mountMenuByUser");
 		return menuCategorias;
