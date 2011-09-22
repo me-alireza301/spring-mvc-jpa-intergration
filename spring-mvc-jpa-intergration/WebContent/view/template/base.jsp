@@ -7,11 +7,11 @@
 		<title></title>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/global.css" type="text/css" media="screen, projection" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/menu.css" type="text/css" media="screen, projection" />
-		<tiles:insertAttribute name="css" defaultValue="" />
+		<tiles:insertAttribute name="css" ignore="true" />
 		<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.6.4.js"></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath}/js/util.js"></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath}/js/menu.js"></script>
-		<tiles:insertAttribute name="js" defaultValue="" />
+		<tiles:insertAttribute name="js" ignore="true" />
 	</head>
 	<body>
 		<div class="wrapper">
