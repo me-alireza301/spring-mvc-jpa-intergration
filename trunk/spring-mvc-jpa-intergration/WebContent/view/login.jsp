@@ -4,6 +4,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <tiles:insertTemplate template="/view/template/base.jsp">
 	<tiles:putAttribute name="body">
-		Bem vindo ${sessionScope.user.login}
+		
 	</tiles:putAttribute>
 </tiles:insertTemplate>
