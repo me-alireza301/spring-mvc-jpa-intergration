@@ -16,6 +16,10 @@ import br.com.wryel.spring.mvc.model.MenuCategoriaModel;
 @RequestMapping("/menuCategoria")
 public class MenuCategoriaController extends BasicController<MenuCategoria, MenuCategoriaModel> {
 	
+	public MenuCategoriaController() {
+		
+	}
+	
 	@Autowired
 	public MenuCategoriaController(MenuCategoriaModel menuCategoriaModel) {
 		super(menuCategoriaModel);

@@ -47,6 +47,7 @@ public class MontaMenuFilter implements Filter {
 		}
 		
 		filterChain.doFilter(servletRequest, servletResponse);
+		
 	}
 
 	public void init(FilterConfig filterConfig) throws ServletException {
