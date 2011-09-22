@@ -90,6 +90,10 @@ public class UsuarioController extends BasicController<Usuario, UsuarioModel> {
 		
 		ModelAndView modelAndView = new ModelAndView("/usuario/" + INPUT, "usuario", usuario);
 		
+		List<TipoUsuario> tiposUsuario = ModelFactory.getModel(TipoUsuario.class).list();
+		
+		modelAndView.addObject("tiposUsuario", tiposUsuario);
+		
 		return modelAndView;
 		
 	}

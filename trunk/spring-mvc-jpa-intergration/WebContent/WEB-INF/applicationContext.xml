@@ -11,6 +11,7 @@
 	<import resource="modules/mvc.xml" />
 	<import resource="modules/database.xml"/>
 	
+	<context:annotation-config />
 	<context:component-scan base-package="br.com.wryel" />
 
 </beans>
