@@ -212,4 +212,8 @@ public abstract class BasicDAO<BEAN> extends AbstractPropertiesDAO<BEAN> {
 		
 		return list;
 	}
+	
+	public <TYPE> TYPE getUniqueResult(String sql, Map<String, Object> parametros, Class<TYPE> klass) {
+		
+	}
 }
