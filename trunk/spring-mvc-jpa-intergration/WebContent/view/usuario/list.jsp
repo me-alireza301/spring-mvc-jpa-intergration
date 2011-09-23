@@ -7,11 +7,17 @@
 		<table border="1" align="center">
 			<caption>testes</caption>
 			<tr>
-				<td>login</td><td>senha</td><td>edit</td>
+				<td>login</td>
+				<td>senha</td>
+				<td>tipo</td>
+				<td>edit</td>
 			</tr>
 			<c:forEach items="${usuarios}" var="usuario">
 			<tr>
-				<td>${usuario.login}</td><td>${usuario.senha}</td><td><a href="edit.java?id=${usuario.id}">edit</a></td>
+				<td>${usuario.login}</td>
+				<td>${usuario.senha}</td>
+				<td>${usuario.tipoUsuario.descricao}</td>
+				<td><a href="edit.java?id=${usuario.id}">edit</a></td>
 			</tr>
 			</c:forEach>
 		</table>
