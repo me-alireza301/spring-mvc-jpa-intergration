@@ -73,9 +73,10 @@ public class UsuarioController extends BasicController<Usuario, UsuarioModel> {
 			
 			List<String> errors = new ArrayList<String>();
 			errors.add(modelException.getMessage());
-			modelAndView.addObject(ERRORS, errors);
 			
-			modelAndView.setViewName("/usuario/" + INPUT);
+			modelAndView.addObject(ERRORS, errors);
+	
+			modelAndView.setViewName("/usuario/" + INPUT);			
 			modelAndView.addObject("usuario", usuario);
 			
 		}
