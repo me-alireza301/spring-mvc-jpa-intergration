@@ -6,7 +6,7 @@ import br.com.wryel.spring.mvc.model.BasicModel;
 /**
  * 
  * @author wryel covo
- *
+ * 
  */
 public abstract class BasicController<BEAN, MODEL extends BasicModel<BEAN, ? extends BasicDAO<BEAN>>> {
 	
