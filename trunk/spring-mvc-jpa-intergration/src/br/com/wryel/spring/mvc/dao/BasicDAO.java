@@ -20,16 +20,16 @@ import br.com.wryel.spring.mvc.util.JPAUtils;
  * @author wryel covo
  *
  */
-public abstract class BasicDAO<BEAN> extends AbstractPropertiesDAO<BEAN> {
+public abstract class BasicDAO<BEAN> extends PropertiesHelperDAO<BEAN> {
 	
-	@PersistenceContext(type = PersistenceContextType.EXTENDED)
+	protected static final String ORDER_BY = "orderBy";
+	
+	protected static final String FIRST_RESULT = "firstResult";
+	
+	protected static final String MAX_RESULT = "maxResult";	
+	
+	@PersistenceContext(type = PersistenceContextType.TRANSACTION)
 	protected EntityManager entityManager;
-	
-	public static final String ORDER_BY = "orderBy";
-	
-	public static final String FIRST_RESULT = "firstResult";
-	
-	public static final String MAX_RESULT = "maxResult";	
 	
 	public BasicDAO() {
 		

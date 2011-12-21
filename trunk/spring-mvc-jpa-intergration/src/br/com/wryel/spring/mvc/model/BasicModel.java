@@ -36,12 +36,12 @@ public abstract class BasicModel<BEAN, DAO extends BasicDAO<BEAN>> {
 		this.dao = dao;
 	}
 	
-	@Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_UNCOMMITTED)
+	@Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED)
 	public List<BEAN> list() throws ApplicationException {
 		return this.list(new HashMap<String, Object>());
 	}
 	
-	@Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_UNCOMMITTED)
+	@Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED)
 	public BEAN retrieve(BEAN bean) throws ApplicationException {
 		BEAN findedBean = this.dao.retrieve(bean);
 		return findedBean;
@@ -52,13 +52,13 @@ public abstract class BasicModel<BEAN, DAO extends BasicDAO<BEAN>> {
 		this.dao.delete(bean);
 	}
 	
-	@Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_UNCOMMITTED)
+	@Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED)
 	public List<BEAN> list(Map<String, Object> parametros) throws ApplicationException {
 		List<BEAN> result = this.dao.list(parametros);
 		return result;
 	}
 	
-	@Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_UNCOMMITTED)
+	@Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED)
 	public long count(Map<String, Object> parametros) throws ApplicationException {
 		long count = this.dao.count(parametros);
 		return count;
