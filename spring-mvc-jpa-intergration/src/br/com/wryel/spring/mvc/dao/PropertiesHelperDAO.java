@@ -11,23 +11,22 @@ import org.apache.log4j.Logger;
  *
  */
 @SuppressWarnings("unchecked")
-public abstract class AbstractPropertiesDAO<BEAN> {
+public abstract class PropertiesHelperDAO<BEAN> {
 	
+	protected static final String SELECT_KEY = "select";
+	
+	protected static final String NAMED_KEY = "named";
+
 	protected Properties properties;
 	
 	protected Class<BEAN> beanClass;
 	
-	protected final String SELECT_KEY = "select";
-	
-	protected final String NAMED_KEY = "named";
-	
-	protected Logger logger;
+	protected Logger logger = Logger.getLogger(beanClass);
 
-	public AbstractPropertiesDAO() {
+	public PropertiesHelperDAO() {
 		try {
 			ParameterizedType parameterizedType = (ParameterizedType) getClass().getGenericSuperclass();
 			beanClass = (Class<BEAN>) parameterizedType.getActualTypeArguments()[0];
-			logger = Logger.getLogger(beanClass);
 			properties = new Properties();
 			properties.load(getClass().getResourceAsStream("/dao/" + beanClass.getSimpleName() + ".properties"));
 		} catch (Exception exception) {
@@ -39,7 +38,7 @@ public abstract class AbstractPropertiesDAO<BEAN> {
 		return this.properties;
 	}
 	
-	public Class<BEAN> getBeanClass() {
+	public final Class<BEAN> getBeanClass() {
 		return beanClass;
 	}
 
@@ -51,7 +50,7 @@ public abstract class AbstractPropertiesDAO<BEAN> {
 		return sql.toString();
 	}
 	
-	protected String getNamed(String name) {
+	protected String getNamedKey(String name) {
 		return getProperties().getProperty(NAMED_KEY + "." + name);
 	}
 }
