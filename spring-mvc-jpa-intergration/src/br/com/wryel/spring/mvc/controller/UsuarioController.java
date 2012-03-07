@@ -27,8 +27,10 @@ import br.com.wryel.spring.mvc.web.HttpSessionParams;
 
 @Controller
 @RequestMapping(value = "/usuario")
-public class UsuarioController extends BasicController<Usuario, UsuarioModel> {
-	
+public class UsuarioController extends WebEntityController<Usuario, UsuarioModel> {
+
+	private static final long serialVersionUID = 1L;
+
 	@Autowired
 	public UsuarioController(UsuarioModel usuarioModel) {
 		super(usuarioModel);
@@ -121,7 +123,7 @@ public class UsuarioController extends BasicController<Usuario, UsuarioModel> {
 			
 		} else {
 			
-			modelAndView.setViewName(LOGIN);
+			modelAndView.setViewName("login");
 			
 			List<String> errors = new ArrayList<String>();
 			errors.add("usuario/senha inválido");

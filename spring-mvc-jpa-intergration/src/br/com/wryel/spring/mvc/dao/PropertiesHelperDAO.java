@@ -3,8 +3,6 @@ package br.com.wryel.spring.mvc.dao;
 import java.lang.reflect.ParameterizedType;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
-
 /**
  * 
  * @author wryel covo
@@ -21,8 +19,6 @@ public abstract class PropertiesHelperDAO<BEAN> {
 	
 	protected Class<BEAN> beanClass;
 	
-	protected Logger logger = Logger.getLogger(beanClass);
-
 	public PropertiesHelperDAO() {
 		try {
 			ParameterizedType parameterizedType = (ParameterizedType) getClass().getGenericSuperclass();
@@ -30,7 +26,7 @@ public abstract class PropertiesHelperDAO<BEAN> {
 			properties = new Properties();
 			properties.load(getClass().getResourceAsStream("/dao/" + beanClass.getSimpleName() + ".properties"));
 		} catch (Exception exception) {
-			logger.error(exception);
+			System.out.println(exception);
 		}
 	}
 	

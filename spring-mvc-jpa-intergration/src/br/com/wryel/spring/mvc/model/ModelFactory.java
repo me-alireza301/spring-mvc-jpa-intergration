@@ -5,6 +5,7 @@ import java.io.Serializable;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
@@ -15,6 +16,7 @@ import br.com.wryel.spring.mvc.dao.BasicDAO;
  * @author wryel covo
  *
  */
+@Scope("singleton")
 @Component
 public class ModelFactory implements ApplicationContextAware {
 
@@ -28,6 +30,10 @@ public class ModelFactory implements ApplicationContextAware {
 	}
 
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-		ModelFactory.applicationContext = applicationContext;
+		delegateApplicationContext(applicationContext);
+	}
+	
+	private static void delegateApplicationContext(ApplicationContext applicationContext){
+		ModelFactory.applicationContext = applicationContext;		
 	}
 }
