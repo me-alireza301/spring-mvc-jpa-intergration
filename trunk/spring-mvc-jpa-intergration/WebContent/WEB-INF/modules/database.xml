@@ -19,7 +19,7 @@
 		<property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
                 <property name="showSql" value="false" />
-                <property name="database" value="MYSQL" />  
+                <property name="database" value="MYSQL" />
             </bean>
         </property>
 	</bean>
@@ -42,11 +42,11 @@
                 
         -->
         
-        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/query?autoReconnect=true" />
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/framework?autoReconnect=true" />
 		<property name="properties">
 			<props>
                 <prop key="user">root</prop>
-                <prop key="password">12345</prop>
+                <prop key="password">demo</prop>
 <!-- 				<prop key="c3p0.max_size">50</prop> -->
 <!-- 				<prop key="c3p0.min_size">1</prop> -->
 <!-- 				<prop key="c3p0.acquire_increment">3</prop> -->

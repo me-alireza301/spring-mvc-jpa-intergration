@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import br.com.wryel.spring.mvc.bean.Usuario;
-import br.com.wryel.spring.mvc.controller.BasicController;
+import br.com.wryel.spring.mvc.controller.WebEntityController;
 import br.com.wryel.spring.mvc.web.HttpSessionParams;
 
 public class UsuarioLogadoFilter implements Filter {
@@ -34,7 +34,7 @@ public class UsuarioLogadoFilter implements Filter {
 			
 			filterChain.doFilter(servletRequest, servletResponse);
 			
-		} else if (httpServletRequest.getRequestURI().contains(BasicController.LOGIN)) {
+		} else if (httpServletRequest.getRequestURI().contains("login")) {
 			
 			filterChain.doFilter(servletRequest, servletResponse);
 			
@@ -48,7 +48,7 @@ public class UsuarioLogadoFilter implements Filter {
 			
 			HttpServletResponse httpServletResponse = (HttpServletResponse) servletResponse;
 			
-			httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/" + BasicController.LOGIN + BasicController.VIEW_EXTENSION);
+			httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/" + "login" + WebEntityController.VIEW_EXTENSION);
 			
 		}		
 	}
